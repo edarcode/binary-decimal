@@ -1,6 +1,6 @@
 export const BASE = {
-	binario: 2,
 	decimal: 10,
+	binario: 2,
 	optal: 8,
 	hexadecimal: 16
 };

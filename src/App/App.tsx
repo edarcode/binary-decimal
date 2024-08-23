@@ -10,25 +10,26 @@ export default function App() {
 	const convert = (e: FormEvent) => {
 		e.preventDefault();
 		const form = new FormData(e.currentTarget);
-		const baseOrigin = Number(form.get("base-origin"));
-		const baseToConvert = Number(form.get("base-to-convert"));
+		const baseOrigin = Number(form.get("original"));
+		const baseToConvert = Number(form.get("convert"));
 		const num = form.get("num") as string;
-		const parse = parseInt(num, baseOrigin);
-		const result = parse.toString(baseToConvert);
+		const numInBaseOrigin = parseInt(num, baseOrigin);
+		const result = numInBaseOrigin.toString(baseToConvert);
+
 		setResult(result);
 	};
 
 	return (
 		<div className={css.app}>
 			<form onSubmit={convert} className={css.form}>
-				<Select name="base-origin" options={OPTIONS} title="Base original" />
+				<Select name="original" options={OPTIONS} title="Original" />
+				<input type="number" name="num" />
 				<Select
-					name="base-to-convert"
+					name="convert"
 					options={OPTIONS}
 					title="Conversión"
 					defaultValue={BASE.binario}
 				/>
-				<input type="number" name="num" />
 				<button>Convertir</button>
 			</form>
 			<div>{result}</div>
