@@ -5,3 +5,8 @@
 	place-content: center;
 	gap: var(--g-md);
 }
+
+.form {
+	display: grid;
+	gap: var(--g-md);
+}

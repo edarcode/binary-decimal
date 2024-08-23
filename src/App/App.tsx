@@ -19,20 +19,26 @@ export default function App() {
 
 	return (
 		<div className={css.app}>
-			<form onSubmit={convert}>
-				<select name="base-origin">
-					<option value={BASE.decimal}>Decimal</option>
-					<option value={BASE.binario}>Binario</option>
-					<option value={BASE.optal}>Optal</option>
-					<option value={BASE.hexadecimal}>Hexadecimal</option>
-				</select>
+			<form onSubmit={convert} className={css.form}>
+				<label>
+					Número original
+					<select name="base-origin">
+						<option value={BASE.decimal}>Decimal</option>
+						<option value={BASE.binario}>Binario</option>
+						<option value={BASE.optal}>Optal</option>
+						<option value={BASE.hexadecimal}>Hexadecimal</option>
+					</select>
+				</label>
 
-				<select name="base-to-convert">
-					<option value={BASE.decimal}>Decimal</option>
-					<option value={BASE.binario}>Binario</option>
-					<option value={BASE.optal}>Optal</option>
-					<option value={BASE.hexadecimal}>Hexadecimal</option>
-				</select>
+				<label>
+					Conversión
+					<select name="base-to-convert" defaultValue={BASE.binario}>
+						<option value={BASE.decimal}>Decimal</option>
+						<option value={BASE.binario}>Binario</option>
+						<option value={BASE.optal}>Optal</option>
+						<option value={BASE.hexadecimal}>Hexadecimal</option>
+					</select>
+				</label>
 
 				<input type="number" name="num" />
 				<button>Convertir</button>
