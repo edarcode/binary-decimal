@@ -8,13 +8,6 @@
 @import "./styles/scroll.css";
 
 body {
-  background-color: var(--bg-main);
-  color: var(--txt-sec);
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: var(--c-white);
-    color: var(--c-black);
-  }
+	background-color: var(--bg-main);
+	color: var(--txt-sec);
 }
