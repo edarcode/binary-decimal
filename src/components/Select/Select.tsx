@@ -1,22 +1,29 @@
-import { Select as SelectType } from "../../types";
+import css from "./css.module.css";
+import Arrow from "./icons/Arrow.js";
+import { KINDS } from "./kinds.js";
+import { joinClass } from "./utils/joinClass.js";
 
 export default function Select(props: Props) {
-	const { options: values, title, ...extraProps } = props;
+	const { className, opt, kind, ...extraProps } = props;
+
+	const finalClass = joinClass([css.wrapper_select, className]);
+	const finalClassSelect = joinClass([css.select, KINDS[kind ?? "primary"]]);
+
 	return (
-		<label>
-			<span>{title}</span>
-			<select {...extraProps}>
-				{values.map(item => (
+		<div className={finalClass}>
+			<select {...extraProps} className={finalClassSelect}>
+				{opt.map(item => (
 					<option key={item.value} value={item.value}>
 						{item.display}
 					</option>
 				))}
 			</select>
-		</label>
+			<Arrow className={css.arrow} />
+		</div>
 	);
 }
 
-interface Props extends SelectType {
-	title: string;
-	options: { value: number; display: string }[];
+interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
+	opt: { value: any; display: string }[];
+	kind?: keyof typeof KINDS;
 }

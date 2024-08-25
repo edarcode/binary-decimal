@@ -9,4 +9,10 @@
 .form {
 	display: grid;
 	gap: var(--g-md);
+	grid-template-columns: 1fr 1fr;
+}
+
+.result {
+	border: 2px solid #06c;
+	padding: 5px;
 }

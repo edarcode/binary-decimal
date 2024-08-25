@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FormEvent } from "../types";
 import css from "./css.module.css";
-import Select from "../components/Select/Select";
 import { BASE, OPTIONS } from "./consts";
+import Select from "../components/Select/Select";
+import InputNumber from "../components/InputNumber/InputNumber";
+import Btn from "../components/Btn/Btn";
 
 export default function App() {
 	const [result, setResult] = useState("");
@@ -22,17 +24,12 @@ export default function App() {
 	return (
 		<div className={css.app}>
 			<form onSubmit={convert} className={css.form}>
-				<Select name="original" options={OPTIONS} title="Original" />
-				<input type="number" name="num" />
-				<Select
-					name="convert"
-					options={OPTIONS}
-					title="Conversión"
-					defaultValue={BASE.binario}
-				/>
-				<button>Convertir</button>
+				<InputNumber name="num" />
+				<Select name="original" opt={OPTIONS} />
+				<div className={css.result}>{result}</div>
+				<Select name="convert" opt={OPTIONS} defaultValue={BASE.binario} />
+				<Btn>Convertir</Btn>
 			</form>
-			<div>{result}</div>
 		</div>
 	);
 }
